@@ -18,8 +18,8 @@
       <span v-if="currentQuiz.text.length > 0">
         
         <v-card v-if="currentQuiz.text.length > 0">
-<!--v-btn @click="refreshPage" prepend-icon="mdi-reload">Reload</v-btn-->
-<v-btn prepend-icon="mdi-home" to="/" text="Zurück"></v-btn>
+            <v-btn @click="refreshPage" prepend-icon="mdi-reload">Neu laden</v-btn>
+            <v-btn prepend-icon="mdi-home" to="/" text="Zurück"></v-btn>
 
           <v-card-title class="text-center">{{ currentQuiz.type }}</v-card-title>
           <v-card-text class="text-center">
