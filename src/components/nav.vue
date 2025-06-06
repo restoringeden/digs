@@ -31,5 +31,10 @@
       icon: 'mdi-home',
       title: 'KIB',
     },
+        {
+      href: '#',
+      icon: 'mdi-alert',
+      title: 'Vorführseite: Nicht Offiziell',
+    },
   ]
 </script>
