@@ -102,6 +102,7 @@
       </v-container>
             </div>
   </v-container>
+  <Nav></Nav>
 </template>
 
 <script setup lang="ts">

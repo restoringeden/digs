@@ -66,34 +66,5 @@
 
       </div>
   </v-container>
+  <Nav></Nav>
 </template>
-
-<script setup lang="ts">
-  const links = [
-    {
-      href: 'https://fcg-gifhorn.church.tools/grouphomepage/cntiwIK9ra074RcMC0i6pfQiL2XTYaxe',
-      icon: 'mdi-star-circle-outline',
-      text: 'In Bewegung, statt stehenbleiben!',
-      title: 'FokusGroups',
-    },
-    {
-      href: 'https://fcg-gifhorn.church.tools/grouphomepage/NNyxLfwas9EOICgfUvBOMgc6qNXoniVa',
-      icon: 'mdi-widgets-outline',
-      text: 'Mitten drin, statt nur dabei!',
-      title: 'LifeGroups',
-    },
-    {
-      href: 'https://kirche-im-brauhaus.de/kontakt/',
-      icon: 'mdi-account-group-outline',
-      text: 'Schreib uns!',
-      title: 'KONTAKT',
-    },
-    {
-      href: 'https://kirche-im-brauhaus.de/',
-      icon: 'mdi-home',
-      text: 'Eine Kirche für dich.',
-      title: 'KIRCHE IM BRAUHAUS',
-    },
-  ]
-</script>
-
