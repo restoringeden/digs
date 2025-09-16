@@ -30,7 +30,7 @@
 
             <template #title>
               <h2 class="text-h5 font-weight-bold">
-                Step Two: Du & Die KIB
+                Step 3: Du & dein Design 
               </h2>
             </template>
 
