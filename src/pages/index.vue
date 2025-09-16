@@ -41,10 +41,10 @@
             <v-card-actions>
               <v-row>
                 <v-col cols="12" sm="auto">
-                  <v-btn prepend-icon="mdi-shield-crown" variant="outlined" to="/du" text="Step Two: Du"></v-btn>
+                  <v-btn prepend-icon="mdi-shield-crown" variant="outlined" to="/du" text="Step 3: Du"></v-btn>
                 </v-col>
                 <v-col cols="12" sm="auto">
-                  <v-btn prepend-icon="mdi-shield-crown" variant="outlined" to="/wir" text="Step Two: Deine Gaben & KIB"></v-btn>
+                  <v-btn prepend-icon="mdi-shield-crown" variant="outlined" to="/wir" text="Step 3: Dein Design"></v-btn>
                 </v-col>
               </v-row>
             </v-card-actions>
