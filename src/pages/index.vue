@@ -13,7 +13,6 @@
       <div class="mb-8 text-center">
         <h1 class="text-h2 font-weight-bold">Next Steps</h1>
       </div>
-      
 
       <v-row>
         <v-col cols="12">
@@ -35,19 +34,24 @@
               </h2>
             </template>
 
-            <template #text >
+            <template #text>
             Lerne uns kennen und erfahre, wie du Teil der KiB werden kannst. Hier kannst du alle Fragen stellen, die du zu unserer Kirche hast.
             </template>
 
             <v-card-actions>
-              <v-btn prepend-icon="mdi-shield-crown"  variant="outlined" to="/du" text="Step Two: Du"></v-btn>
-              <v-btn prepend-icon="mdi-shield-crown"  variant="outlined" to="/wir" text="Step Two: Deine Gaben & KIB"></v-btn>
+              <v-row>
+                <v-col cols="12" sm="auto">
+                  <v-btn prepend-icon="mdi-shield-crown" variant="outlined" to="/du" text="Step Two: Du"></v-btn>
+                </v-col>
+                <v-col cols="12" sm="auto">
+                  <v-btn prepend-icon="mdi-shield-crown" variant="outlined" to="/wir" text="Step Two: Deine Gaben & KIB"></v-btn>
+                </v-col>
+              </v-row>
             </v-card-actions>
-            
           </v-card>
         </v-col>
 
-        <v-col v-for="link in links" :key="link.href" cols="6">
+        <v-col v-for="link in links" :key="link.href" cols="6" md="3">
           <v-card
             append-icon="mdi-open-in-new"
             class="py-4 overflow-visible"
@@ -63,8 +67,7 @@
           />
         </v-col>
       </v-row>
-
-      </div>
+    </div>
   </v-container>
   <Nav></Nav>
 </template>

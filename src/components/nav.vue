@@ -22,19 +22,9 @@
       title: 'LifeGroups',
     },
     {
-      href: 'https://kirche-im-brauhaus.de/kontakt/',
-      icon: 'mdi-account-group-outline',
-      title: 'KONTAKT',
-    },
-    {
       href: 'https://kirche-im-brauhaus.de/',
       icon: 'mdi-home',
       title: 'KIB',
-    },
-        {
-      href: '#',
-      icon: 'mdi-alert',
-      title: 'Vorführseite: Nicht Offiziell',
     },
   ]
 </script>
