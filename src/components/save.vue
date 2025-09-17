@@ -21,12 +21,26 @@ const printResults = () => {
 @media print {
   /* General print body styles */
   body {
+    background: white !important;
     font-size: 10pt;
   }
 
   /* Hide UI elements that shouldn't be in the printout */
-  .v-btn {
+  .v-btn,
+  .v-sparkline {
     display: none !important;
+  }
+
+  /* Ensure logo is visible and inverted for printing */
+  .v-img {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    filter: invert(1);
+  }
+
+  /* Ensure all text and icons are black for readability */
+  * {
+    color: #000 !important;
   }
 
   /* Adjust card appearance for a cleaner print */
@@ -59,6 +73,9 @@ const printResults = () => {
   }
   .v-expansion-panel__wrapper {
     grid-template-rows: 1fr !important;
+  }
+  .v-expansion-panel-text {
+    overflow: visible !important;
   }
   .v-expansion-panel-text__wrapper {
     padding: 8px 16px !important;
