@@ -67,7 +67,7 @@
             :key="i.section[0]"
             :title="i.section.join('/')"
             :text="i.text"
-            :class="{ 'top-score-border': i.section[0].split('.')[0] === topScoreSection }"
+            :class="{ 'top-score-border': topScoreSections.includes(i.section[0].split('.')[0]) }"
           ><v-expansion-panel-text>Bibel: {{ i.bible }}</v-expansion-panel-text>
           <v-expansion-panel-text>Teams: {{ i.team }}</v-expansion-panel-text>
           </v-expansion-panel>
@@ -655,7 +655,7 @@ const scores: Record<string, Ref<number>> = {}
 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').slice(0, 24).forEach(letter => { scores[`score${letter}`] = ref(0)
 })
 
-const topScoreSection = ref('');
+const topScoreSections = ref<string[]>([]);
 var score = "";
 
 let data =  [] as any;
@@ -703,8 +703,12 @@ const calculateHighestSection = () => {
   }))
 
   if (values.length > 0) {
-    const topScore = values.reduce((a, b) => a.value > b.value ? a : b);
-    topScoreSection.value = topScore.section;
+    const maxScore = Math.max(...values.map(v => v.value));
+    if (maxScore > 0) {
+      topScoreSections.value = values
+        .filter(v => v.value === maxScore)
+        .map(v => v.section);
+    }
   }
 
 

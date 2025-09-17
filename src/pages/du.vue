@@ -65,7 +65,7 @@
           <v-col cols="12" md="6" v-for="typ in people">
             <v-card
               class="mx-auto"
-              :class="{ 'top-score-border': typ.type === topScoreSection }"
+              :class="{ 'top-score-border': topScoreSections.includes(typ.type) }"
             >
               <v-card-item>
                 <div>
@@ -92,9 +92,10 @@
         <v-expansion-panels>
           <v-expansion-panel
             v-for="i in detailed"
-            :key="i.section[0]"
+            :key="i.section.join('/')"
             :title="i.section.join('/')"
             :text="i.text"
+            :class="{ 'top-score-border': isTopDetailedSection(i.section) }"
           >
           </v-expansion-panel>
         </v-expansion-panels>
@@ -328,7 +329,7 @@ const scoreD = ref(0);
 const scoreI = ref(0);
 const scoreG = ref(0);
 const scoreS = ref(0);
-const topScoreSection = ref('');
+const topScoreSections = ref<string[]>([]);
 var score ="";
 
 let data =  [] as any;
@@ -376,7 +377,7 @@ const nextQuiz = () => {
 
 // Method to determine which section has the highest score
 const calculateHighestSection = () => {
-  data = [scoreD.value, scoreI.value, scoreG.value, scoreS.value ]
+  data = [scoreD.value, scoreI.value, scoreG.value, scoreS.value];
   score = "D:" + scoreD.value + "\n  I:" + scoreI.value + "\n  G:" + scoreG.value + "\n  S:" + scoreS.value;
 
   const scores = {
@@ -386,7 +387,23 @@ const calculateHighestSection = () => {
     G: scoreG.value,
   };
 
-  topScoreSection.value = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+  const maxScore = Math.max(...Object.values(scores));
+
+  if (maxScore > 0) {
+    topScoreSections.value = Object.entries(scores)
+      .filter(([key, value]) => value === maxScore)
+      .map(([key]) => key);
+  }
+};
+
+const isTopDetailedSection = (section: string[]) => {
+  if (topScoreSections.value.length < 1) return false;
+
+  // Highlight single sections that are in the top scores
+  if (section.length === 1) return topScoreSections.value.includes(section[0]);
+
+  // Highlight combined sections if both parts are in the top scores
+  return section.every(part => topScoreSections.value.includes(part));
 };
 
 const refreshPage = () => {
