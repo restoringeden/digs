@@ -15,9 +15,26 @@
       </div>
       
       <v-container>
-      <span v-if="currentQuiz.text.length > 0">
+      <span v-if="view === 'intro'">
+        <v-card class="py-4" rounded="lg" variant="tonal">
+          <v-card-title class="text-center">Gaben-Test</v-card-title>
+          <v-card-text class="text-center">
+            Starte den Test, um deine geistlichen Gaben zu entdecken, oder sieh dir die Beschreibung der verschiedenen Gaben an.
+          </v-card-text>
+          <v-card-actions class="d-flex flex-column align-center">
+            <v-btn @click="view = 'quiz'" variant="tonal" size="large" class="mb-2">Test starten</v-btn>
+            <div>
+              <v-btn @click="showLegend" variant="text" size="small">Legende nachschlagen</v-btn>
+              <v-btn prepend-icon="mdi-home" to="/" text="Zurück" variant="text" size="small"></v-btn>
+            </div>
+          </v-card-actions>
+        </v-card>
+        <br/>
+        <PrivacyNote />
+      </span>
+      <span v-else-if="view === 'quiz'">
         
-        <v-card v-if="currentQuiz.text.length > 0">
+        <v-card>
             <v-btn @click="refreshPage" prepend-icon="mdi-reload">Neu laden</v-btn>
             <v-btn prepend-icon="mdi-home" to="/" text="Zurück"></v-btn>
 
@@ -37,7 +54,7 @@
         </v-card>
 
         </span>
-        <span v-else>
+        <span v-else-if="view === 'results'">
         <v-card class="py-4 overflow-visible" rounded="lg"
                 variant="tonal">
                 <v-btn prepend-icon="mdi-home" to="/" text="Zurück"></v-btn>
@@ -85,6 +102,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Save from '@/components/save.vue';
+import PrivacyNote from '@/components/PrivacyNote.vue';
 import type { Ref } from 'vue';
 
 
@@ -655,6 +673,7 @@ const scores: Record<string, Ref<number>> = {}
 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').slice(0, 24).forEach(letter => { scores[`score${letter}`] = ref(0)
 })
 
+const view = ref('intro'); // intro, quiz, results
 const topScoreSections = ref<string[]>([]);
 var score = "";
 
@@ -683,15 +702,8 @@ const nextQuiz = () => {
   if (currentIndex.value < quizzes.length) {
     currentQuiz.value = quizzes[currentIndex.value];
   } else {
-    //currentQuiz.value = null; // No more quizzes
-  currentQuiz.value = {
-    type: '',
-    text: '',
-    section: ''
-        };
     calculateHighestSection(); // Determine highest scoring section
-    
-    
+    view.value = 'results';
   }
 };
 
@@ -721,6 +733,11 @@ const calculateHighestSection = () => {
   data = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').slice(0, 24).map(letter => scores[`score${letter}`].value);
 
 }
+
+const showLegend = () => {
+  calculateHighestSection();
+  view.value = 'results';
+};
 
 
 
