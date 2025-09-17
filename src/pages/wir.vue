@@ -25,7 +25,7 @@
           <v-card-text class="text-center">
             <p>{{ currentQuiz.text }}</p>
               <br>
-              <v-btn v-for="(choice, index) in choices" :key="index" @click="selectChoice(choice, currentQuiz.section)">
+              <v-btn v-for="(choice, index) in choices" :key="index" @click="selectChoice(choice, currentQuiz.section)" variant="outlined" class="ma-1">
                 {{ choice.text }}
               </v-btn>           
 
@@ -58,7 +58,7 @@
                 auto-draw
               ></v-sparkline>
           <v-card-text class="text-center">{{ score }}</v-card-text>
-          <v-card-text class="text-center">mach bitte einen Screenshot</v-card-text>
+          <Save />
         </v-card>
         <br/>
         <v-expansion-panels>
@@ -67,6 +67,7 @@
             :key="i.section[0]"
             :title="i.section.join('/')"
             :text="i.text"
+            :class="{ 'top-score-border': i.section[0].split('.')[0] === topScoreSection }"
           ><v-expansion-panel-text>Bibel: {{ i.bible }}</v-expansion-panel-text>
           <v-expansion-panel-text>Teams: {{ i.team }}</v-expansion-panel-text>
           </v-expansion-panel>
@@ -83,7 +84,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-
+import Save from '@/components/save.vue';
 import type { Ref } from 'vue';
 
 
@@ -654,6 +655,7 @@ const scores: Record<string, Ref<number>> = {}
 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').slice(0, 24).forEach(letter => { scores[`score${letter}`] = ref(0)
 })
 
+const topScoreSection = ref('');
 var score = "";
 
 let data =  [] as any;
@@ -700,6 +702,11 @@ const calculateHighestSection = () => {
     value: refValue.value
   }))
 
+  if (values.length > 0) {
+    const topScore = values.reduce((a, b) => a.value > b.value ? a : b);
+    topScoreSection.value = topScore.section;
+  }
+
 
   // Create a readable score summary
   const scoreSummary = values
@@ -718,3 +725,9 @@ const refreshPage = () => {
 };
 
 </script>
+
+<style>
+.top-score-border {
+  border: 2px solid gold !important;
+}
+</style>

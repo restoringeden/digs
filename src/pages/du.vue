@@ -25,7 +25,7 @@
           <v-card-text class="text-center">
             <p>{{ currentQuiz.text }}</p>
               <br>
-              <v-btn v-for="(choice, index) in choices" :key="index" @click="selectChoice(choice, currentQuiz.section)">
+              <v-btn v-for="(choice, index) in choices" :key="index" @click="selectChoice(choice, currentQuiz.section)" variant="outlined" class="ma-1">
                 {{ choice.text }}
               </v-btn>           
 
@@ -58,12 +58,15 @@
                 auto-draw
               ></v-sparkline>
           <v-card-text class="text-center">{{ score }}</v-card-text>
-          <v-card-text class="text-center">mach bitte einen Screenshot</v-card-text>
+          <Save />
         </v-card>
         <br/>
         <v-row justify="center">
           <v-col cols="12" md="6" v-for="typ in people">
-            <v-card class="mx-auto">
+            <v-card
+              class="mx-auto"
+              :class="{ 'top-score-border': typ.type === topScoreSection }"
+            >
               <v-card-item>
                 <div>
                   <div class="text-overline mb-1">
@@ -107,6 +110,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import Save from '@/components/save.vue';
 
 // Define the quizzes with titles and text
 const quizzes = [
@@ -324,6 +328,7 @@ const scoreD = ref(0);
 const scoreI = ref(0);
 const scoreG = ref(0);
 const scoreS = ref(0);
+const topScoreSection = ref('');
 var score ="";
 
 let data =  [] as any;
@@ -372,12 +377,25 @@ const nextQuiz = () => {
 // Method to determine which section has the highest score
 const calculateHighestSection = () => {
   data = [scoreD.value, scoreI.value, scoreG.value, scoreS.value ]
-  score ="D:"+  scoreD.value +    "\n  I:" +  scoreI.value +"\n  G:" +  scoreG.value +"\n  S:" +  scoreS.value;
-};
+  score = "D:" + scoreD.value + "\n  I:" + scoreI.value + "\n  G:" + scoreG.value + "\n  S:" + scoreS.value;
 
+  const scores = {
+    D: scoreD.value,
+    I: scoreI.value,
+    S: scoreS.value,
+    G: scoreG.value,
+  };
+
+  topScoreSection.value = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+};
 
 const refreshPage = () => {
   window.location.reload(); // Reloads the current page
 };
 
 </script>
+<style>
+.top-score-border {
+  border: 2px solid gold !important;
+}
+</style>
