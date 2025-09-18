@@ -12,9 +12,10 @@
       </div>
       <div class="mb-8 text-center">
         <h1 class="text-h2 font-weight-bold">Next Steps</h1>
+      </div>
+      <div class="mb-8 text-center">
         <h3>Vier Schritte, in denen wir Gott und seine Vision für die Kirche im Brauhaus kennenlernen, um einen Unterschied zu machen.</h3>
       </div>
-
       <v-row>
 
 
