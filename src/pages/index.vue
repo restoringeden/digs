@@ -70,6 +70,7 @@
             <v-card-title class="text-center text-h6">So kannst du deinen nächsten Schritt gehen</v-card-title>
             <v-card-text class="text-body-2 text-center">
               An den ersten 4 Sonntagen jeweils nach unseren Gotttesdiensten steht ein Team für dich bereit, um mit dir deinen nächsten Schritt zu gehen. Besuche unsere Gottesdienste – da beginnt deine Reise.
+               </v-card-text>
                <v-btn prepend-icon="mdi-shield-crown" variant="outlined" to="https://kirche-im-brauhaus.de/nextsteps/" text="Starte Durch"></v-btn>
           </v-card>
         </v-col>
