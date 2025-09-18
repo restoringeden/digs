@@ -21,7 +21,7 @@
         <v-col cols="12">
           <v-card class="py-4" rounded="lg" variant="outlined" color="grey">
             <v-card-title class="text-center text-h6">Was ist dein nächster Schritt?</v-card-title>
-            <v-card-text class="text-body-2 text-center">
+            <v-card-text class="text-body-2 text-left">
               NextSteps ist eine vierteilige Reise, in der du mehr darüber erfährst, wer die Kirche im Brauhaus ist, was unsere Vision, Werte und Kultur sind und wie du mit deinen Gaben und Talenten einen Unterschied machen kannst. Oder anders gesagt: NextSteps ist genau das Richtige für dich, wenn du die Kirche im Brauhaus zu deinem Zuhause machen möchtest – und zwar ganz unabhängig davon, ob du schon lange Christ bist oder Jesus gerade erst kennenlernst.
             </v-card-text>
           </v-card>
@@ -30,7 +30,7 @@
         <v-col cols="12">
           <v-card class="py-4" rounded="lg" variant="outlined" color="grey">
             <v-card-title class="text-center text-h6">So kannst du deinen nächsten Schritt gehen</v-card-title>
-            <v-card-text class="text-body-2 text-center">
+            <v-card-text class="text-body-2 text-left">
               An den ersten 4 Sonntagen jeweils nach unseren Gotttesdiensten steht ein Team für dich bereit, um mit dir deinen nächsten Schritt zu gehen. Besuche unsere Gottesdienste – da beginnt deine Reise.
                </v-card-text>
           </v-card>
