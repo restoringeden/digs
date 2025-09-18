@@ -12,6 +12,7 @@
       </div>
       <div class="mb-8 text-center">
         <h1 class="text-h2 font-weight-bold">Next Steps</h1>
+        <h3>Vier Schritte, in denen wir Gott und seine Vision für die Kirche im Brauhaus kennenlernen, um einen Unterschied zu machen.</h3>
       </div>
 
       <v-row>
@@ -35,9 +36,8 @@
             </template>
 
             <template #text>
-            Lerne uns kennen und erfahre, wie du Teil der KiB werden kannst. Hier kannst du alle Fragen stellen, die du zu unserer Kirche hast.
+            Finde heraus, mit welchen einzigartigen Persönlichkeitsmerkmalen und Begabungen Gott dich beschenkt hat.
             </template>
-
             <v-card-actions>
               <v-row>
                 <v-col cols="12" sm="auto">
